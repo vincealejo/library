@@ -45,12 +45,7 @@ header {
         width: 20ch;
         padding-block: 1rem;
         background-color: rgb(134, 248, 210);
-        transition: scale ease-out 300ms;
-    }
-
-    .add-book-button:hover {
-        scale: 1.03;
-
+        
     }
 }
 
@@ -92,11 +87,45 @@ form {
         padding: 1rem;
         box-shadow: 0 0 2px #ccc;
         background-color: rgb(255, 255, 255);
-        transition: scale ease-out 300ms;
+
+        .title {
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .author, .pages {
+            font-size: 12px;
+            font-weight: bold;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: #333;
+        }
+
+        .author-name, .pages-number {
+            font-size: 1rem;
+            color: #000;
+        }
+
+        .author-name {
+            text-transform: uppercase;
+            font-weight: normal;
+        }
     }
 
-    .book:hover {
-        scale: 1.03;
+    .options {
+        display: flex;
+        justify-content: end;
+        gap: 1rem;
+    }
+
+    .delete-button {
+        background-color: rgb(243, 134, 134);
+    }
+
+    .read-button {
+        background-color: rgb(235, 203, 116);
+    }
+
+    .read-button.read {
+        background-color: rgb(159, 223, 159);
     }
 
 }

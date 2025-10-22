@@ -5,12 +5,13 @@ const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
 const pagesInput = document.querySelector("#pages");
 
-const books = [];
+let books = [];
 
 function Book(title, author, pages) {
     this.title = title;
     this.author = author;
     this.pages = pages;
+    this.readStatus = false;
     this.id = crypto.randomUUID();
 }
 
@@ -23,23 +24,69 @@ function addBookToLibrary(title, author, pages){
 
 function display() {
     booksCont.innerHTML = "";
+    // display empty message if the books array is empty
+    if(books.length === 0) {
+        booksCont.innerHTML = `<p class="empty-message">Empty! Add a book</p>`
+        return;
+    }
+
+    // displays each books from the books array
     books.forEach((book) => {
         const bookEl = document.createElement("li");
         bookEl.className = "book";
         const title = document.createElement("h2");
-        title.clasName = "title";
+        title.className = "title";
         const author = document.createElement("p");
         author.className = "author";
         const pages = document.createElement("p");
         pages.className = "pages";
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "delete-button";
+        deleteButton.innerText = "Remove";
+        const readButton = document.createElement("button");
+        readButton.className = "read-button";
+        if(book.readStatus) {
+            readButton.innerText = "Read";
+            readButton.classList.add("read");
+        } else {
+            readButton.innerText = "Unread";
+            readButton.classList.remove("read");
+        }
 
+        const contentCont = document.createElement("div");
+        contentCont.className = "content";
+        const optionsCont = document.createElement("div");
+        optionsCont.className = "options";
+
+
+        bookEl.dataset.id = book.id;
         title.innerText = book.title;
-        author.innerText = `Written By: ${book.author}`;
-        pages.innerText = `${book.pages} Pages`;
+        author.innerHTML = `Written by:  <span class="author-name">${book.author}</span>`;
+        pages.innerHTML = `Pages:  <span class="pages-number">${book.pages}</span>`;
 
-        bookEl.append(title, author, pages);
+        contentCont.append(title, author, pages);
+        optionsCont.append(readButton, deleteButton)
+        bookEl.append(contentCont, optionsCont);
 
         booksCont.append(bookEl);
+
+        readButton.addEventListener("click", () => {
+            books = books.map((b) => {
+                if(b.id === bookEl.dataset.id) {
+                    b.readStatus = !b.readStatus;
+                }
+                return b;
+            })
+            display();
+        })
+
+        deleteButton.addEventListener("click" , () => {
+            books = books.filter((b) => {
+                return b.id !== bookEl.dataset.id;
+            })
+            display();
+        })
+
     })
 }
 
