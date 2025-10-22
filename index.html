@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo">Library</h1>
+    </header>
+    <main>
+        <div class="buttons">
+            <div>
+                <button class="add-book-button">Add Book</button>
+                <form action="#" class="hidden">
+                    <label for="title">
+                        <span>TITLE</span>
+                        <input type="text" id="title" required>
+                    </label>
+                    <label for="author">
+                        <span>AUTHOR</span>
+                        <input type="text" id="author" required>
+                    </label>
+                    <label for="pages">
+                        <span># OF PAGES</span>
+                        <input type="number" id="pages" required>
+                    </label>
+                    <button type="submit" class="submit-book-button">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+        <section class="bookshelf">
+            <ul class="books">
+                <!-- Books  -->
+                 <p class="empty-message">Empty! Add a book</p>
+            </ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

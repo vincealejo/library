@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    --base-color: rgb(247, 247, 175);
+    --secondary-color: rgb(156, 191, 223);
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.empty-message {
+    font-size: 32px;
+    text-align: center;
+    grid-area: 1 / 1 / -1 / -1 ;
+}
+
+button {
+    border: none;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+header {
+    padding: 1rem;
+    background-color: var(--secondary-color);
+}
+
+.buttons {
+    padding: 1rem;
+
+    .add-book-button {
+        width: 20ch;
+        padding-block: 1rem;
+        background-color: rgb(134, 248, 210);
+        transition: scale ease-out 300ms;
+    }
+
+    .add-book-button:hover {
+        scale: 1.03;
+
+    }
+}
+
+form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--base-color);
+    padding: 1rem;
+    label {
+        display: grid;
+        span {
+            font-size: 12px;
+            font-weight: bold;
+        }
+    }
+
+    input {
+        border: none;
+        box-shadow:  0 0 2px #333;
+        padding: 0.5em 1em;
+    }
+
+    button {
+        align-self: end;
+        padding: 0.5em 1em;
+        background-color: var(--secondary-color);
+    }
+}
+
+.books {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 30%));
+    padding: 1rem;
+    gap: 1rem;
+    background-color: var(--base-color);
+
+    .book {
+        padding: 1rem;
+        box-shadow: 0 0 2px #ccc;
+        background-color: rgb(255, 255, 255);
+        transition: scale ease-out 300ms;
+    }
+
+    .book:hover {
+        scale: 1.03;
+    }
+
+}
